@@ -57,3 +57,8 @@ main {
   bottom: 20px;
   left: 12rem;
 }
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}

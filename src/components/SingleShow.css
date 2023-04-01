@@ -1,0 +1,14 @@
+.single_show {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.summary {
+  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.show_name {
+  margin-bottom: 20px;
+}
