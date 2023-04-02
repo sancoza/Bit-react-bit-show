@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { SingleShowCast } from './SingleShowCast';
 import './SingleShow.css';
 
 export const SingleShow = () => {
   const [show, setShow] = useState(null);
+  
   const params = useParams();
+
 
   useEffect(() => {
     fetch(`http://api.tvmaze.com/shows/${params.id}`)
@@ -23,14 +26,14 @@ export const SingleShow = () => {
     return summary.replace(/(<([^>]+)>)/gi, '');
   }
   return (
-    <div className="container ">
+    <div className="container">
       <section className="single_show">
         <article>
           <img src={show.image.medium} alt="img"></img>
         </article>
 
         <article>
-          <h1 className='show_name'>{show.name}</h1>
+          <h1 className="show_name">{show.name}</h1>
           GENRES:{' '}
           {show.genres.map((genre) => (
             <span style={{ marginRight: '8px' }} key={genre}>
@@ -42,7 +45,10 @@ export const SingleShow = () => {
         </article>
       </section>
       <section>
-        <h1>CASTS</h1>
+        <div>
+        <h3>CASTS</h3>
+          <SingleShowCast />
+        </div>
       </section>
     </div>
   );
