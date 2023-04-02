@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
 import './ListOfShows.css';
 import { useNavigate } from 'react-router';
 
-export const ListOfShows = () => {
-  const [shows, setShows] = useState([]);
+export const ListOfShows = (props) => {
+
   const navigate = useNavigate();
 
   const onShowClick = (id) => {
@@ -11,23 +10,11 @@ export const ListOfShows = () => {
     navigate(`/shows/${id}`);
   };
 
-  const fetchData = () => {
-    fetch('http://api.tvmaze.com/shows')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setShows(data);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+ 
 
   return (
     <main className="container">
-      {shows.slice(0, 12).map((show) => {
+      {props.shows.slice(0, 12).map((show) => {
         return (
           <div
             key={show.id}
